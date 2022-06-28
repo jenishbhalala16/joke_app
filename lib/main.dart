@@ -21,7 +21,6 @@ class Joke extends StatefulWidget {
 
 class _JokeState extends State<Joke> {
   var crated;
-  var ids;
   var update;
   var values;
 
@@ -31,7 +30,6 @@ class _JokeState extends State<Joke> {
     var results = jsonDecode(response.body);
     setState(() {
       crated = results["created_at"];
-      ids = results["id"];
       update = results["updated_at"];
       values = results["value"];
     });
@@ -56,22 +54,14 @@ class _JokeState extends State<Joke> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Created: ${crated != null ? crated.toString() : "Loading"}",
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.green,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
             Container(
-              height: 50,
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(10),
+              height: 70,
               width: 300,
+              color: Colors.green,
               child: Text(
-                "Joke: ${values != null ? values.toString() : "Loading"}",
+                "Created: ${crated != null ? crated.toString() : "Loading"}",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -81,12 +71,35 @@ class _JokeState extends State<Joke> {
             SizedBox(
               height: 10,
             ),
-            Text(
-              "Updated: ${update != null ? update.toString() : "Loading"}",
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.lightBlue,
-                fontWeight: FontWeight.bold,
+            Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(10),
+              height: 150,
+              width: 300,
+              color: Colors.teal,
+              child: Text(
+                "Joke: ${values != null ? values.toString() : "Loading"}",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(10),
+              height: 70,
+              width: 300,
+              color: Colors.blue,
+              child: Text(
+                "Updated: ${update != null ? update.toString() : "Loading"}",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SizedBox(
